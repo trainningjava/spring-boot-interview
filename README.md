@@ -1,5 +1,4 @@
 # spring-boot-interview
- spring-boot-interview
 
 ## :information_source: Informações do desafio
 
@@ -33,5 +32,26 @@ Considere o cadastro com dados básicos:
 ## :iphone: Telas
 
 <p align="center">
-<img width="600" src="./Tela.JPG?raw=true">
+<img width="600" src="public/images/DatabaseH2.JPG">
 </p>
+
+<p align="center">
+<img width="600" src="public/images/H2Console.JPG">
+</p>
+<p align="center">
+<img width="600" src="public/images/DatabaseH21.JPG">
+</p>
+
+<p align="center">
+<img width="600" src="public/images/Swagger1.JPG">
+</p>
+<p align="center">
+<img width="600" src="public/images/Swagger2.JPG">
+</p>
+<p align="center">
+<img width="600" src="public/images/Swagger3.JPG">
+</p>
+<p align="center">
+<img width="600" src="public/images/Swagger4.JPG">
+</p>
+
