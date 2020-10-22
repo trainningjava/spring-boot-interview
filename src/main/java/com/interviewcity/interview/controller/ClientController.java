@@ -1,8 +1,7 @@
 package com.interviewcity.interview.controller;
 
-import com.interviewcity.interview.model.City;
 import com.interviewcity.interview.model.Client;
-import com.interviewcity.interview.service.ClientService;
+import com.interviewcity.interview.service.ClientServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.Console;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -25,7 +23,7 @@ import static org.springframework.http.ResponseEntity.ok;
 public class ClientController {
 
     @Autowired
-    private ClientService service;
+    private ClientServiceImpl service;
 
     @ApiOperation(value="Salva um Cliente")
     @ApiResponses(value = {

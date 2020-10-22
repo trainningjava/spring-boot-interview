@@ -1,7 +1,7 @@
 package com.interviewcity.interview.controller;
 
 import com.interviewcity.interview.model.City;
-import com.interviewcity.interview.service.CityService;
+import com.interviewcity.interview.service.CityServiceImpl;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class CityController {
      */
 
     @Autowired
-    private CityService service;
+    private CityServiceImpl service;
 
     @ApiOperation(value="Salva uma cidade")
     @ApiResponses(value = {
