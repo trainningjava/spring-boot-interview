@@ -47,6 +47,14 @@ public class ClientServiceImpl implements ClientService {
         }
     }
 
+    public List<Client> listAll() {
+        return this.repository.findAll();
+    }
+
+    public List<Client> listClientByCity(Long id) {
+        return this.repository.findClientByCityId(id);
+    }
+
     public void remove(Long id) {
         repository.deleteById(id);
     }

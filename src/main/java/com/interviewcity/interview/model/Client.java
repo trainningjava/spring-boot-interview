@@ -1,7 +1,6 @@
 package com.interviewcity.interview.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 @ApiModel(description = "Cliente")
@@ -27,14 +25,15 @@ public class Client {
     private long id;
     @ApiModelProperty(notes = "Nome completo")
     private String name;
-    @ApiModelProperty(notes = "M Masculino, F Feminino, O Outros")
+    @ApiModelProperty(notes = "0 Masculino, 1 Feminino, 2 Outros")
     private int sex;
     @ApiModelProperty(notes = "Data de Nascimento")
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "Brazil/East")
     private Date birth;
     @ApiModelProperty(notes = "Idade do cliente")
     private int age;
     @OneToOne
-    @JoinColumn(name = "city_id", referencedColumnName = "id")
-    private City city_id;
+    @JoinColumn(name = "city_id")
+    private City city;
 }

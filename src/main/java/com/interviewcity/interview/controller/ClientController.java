@@ -1,5 +1,6 @@
 package com.interviewcity.interview.controller;
 
+import com.interviewcity.interview.model.City;
 import com.interviewcity.interview.model.Client;
 import com.interviewcity.interview.service.ClientServiceImpl;
 import io.swagger.annotations.Api;
@@ -25,6 +26,18 @@ public class ClientController {
     @Autowired
     private ClientServiceImpl service;
 
+    @ApiOperation(value="Lista todos usuários")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Suceess|OK"),
+            @ApiResponse(code = 401, message = "not authorized!"),
+            @ApiResponse(code = 403, message = "forbidden!!!"),
+            @ApiResponse(code = 404, message = "not found!!!") })
+    @ResponseBody
+    @GetMapping
+    public ResponseEntity<List<Client>> listAll(){
+        return ResponseEntity.ok(this.service.listAll());
+    }
+
     @ApiOperation(value="Salva um Cliente")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Suceess|OK"),
@@ -34,7 +47,6 @@ public class ClientController {
     @ResponseBody
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Client client) throws URISyntaxException {
-        System.out.println(client);
         Client saved = service.save(client);
         return created(new URI(Long.toString(saved.getId()))).build();
     }
@@ -49,6 +61,18 @@ public class ClientController {
     @GetMapping("/{id}")
     public ResponseEntity<Client> findByClientID(@PathVariable("id") long id){
         return ResponseEntity.ok(this.service.findBy(id));
+    }
+
+    @ApiOperation(value="Busca pelo código do cliente")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Suceess|OK"),
+            @ApiResponse(code = 401, message = "not authorized!"),
+            @ApiResponse(code = 403, message = "forbidden!!!"),
+            @ApiResponse(code = 404, message = "not found!!!") })
+    @ResponseBody
+    @GetMapping("/cidade/{id}")
+    public ResponseEntity<List<Client>> findClientByCityId(@PathVariable("id") long id){
+        return ResponseEntity.ok(this.service.listClientByCity(id));
     }
 
     @ApiOperation(value="Busca pelo nome do cliente")

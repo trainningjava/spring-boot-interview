@@ -15,7 +15,11 @@ public interface ClientService {
 
     Client findBy(Long id);
 
+    List<Client> listAll();
+
     List<Client> findByName(String nome);
+
+    List<Client> listClientByCity(Long id);
 
     void update(Long id, Client client);
 

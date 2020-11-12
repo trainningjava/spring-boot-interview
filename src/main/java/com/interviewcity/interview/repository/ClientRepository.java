@@ -1,6 +1,5 @@
 package com.interviewcity.interview.repository;
 
-import com.interviewcity.interview.model.City;
 import com.interviewcity.interview.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +11,9 @@ import java.util.List;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    @Query("from Client c where c.name = :nome")
+    @Query("from Client c where c.name LIKE  :nome%")
     List<Client> findByName(@Param("nome") String nome);
 
+    @Query("SELECT C FROM Client C WHERE C.city.id = :id")
+    List<Client> findClientByCityId(@Param("id") Long id);
 }
